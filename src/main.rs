@@ -1,9 +1,9 @@
-use cursive::views::{LinearLayout, ListView, Panel, TextView};
+use cursive::views::{LinearLayout, ListView, Panel, ResizedView, TextView};
 use cursive::{Cursive, CursiveExt};
 
 /// Create a task panel with the given title.
-fn task_panel(title: &str) -> Panel<ListView> {
-    Panel::new(ListView::new()).title(title)
+fn task_panel(title: &str) -> ResizedView<Panel<ListView>> {
+    ResizedView::with_full_screen(Panel::new(ListView::new()).title(title))
 }
 
 fn main() {
@@ -13,7 +13,7 @@ fn main() {
     let today = task_panel("Today");
 
     // both task views
-    let tasks = LinearLayout::horizontal().child(bag).child(today);
+    let tasks = ResizedView::with_full_screen(LinearLayout::horizontal().child(bag).child(today));
 
     let screen = LinearLayout::vertical()
         .child(tasks)
