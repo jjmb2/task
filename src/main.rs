@@ -17,7 +17,7 @@ fn main() {
 
     let screen = LinearLayout::vertical()
         .child(tasks)
-        .child(Panel::new(TextView::new("q: quit ")));
+        .child(Panel::new(TextView::new("q: quit ")).title("Commands"));
 
     siv.add_layer(screen);
     siv.add_global_callback('q', |s| s.quit());
