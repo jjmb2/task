@@ -2,12 +2,8 @@ use cursive::views::{LinearLayout, ListView, Panel, TextView};
 use cursive::{Cursive, CursiveExt};
 
 /// Create a task panel with the given title.
-fn task_panel(title: &str) -> Panel<LinearLayout> {
-    Panel::new(
-        LinearLayout::vertical()
-            .child(TextView::new(title))
-            .child(ListView::new()),
-    )
+fn task_panel(title: &str) -> Panel<ListView> {
+    Panel::new(ListView::new()).title(title)
 }
 
 fn main() {
